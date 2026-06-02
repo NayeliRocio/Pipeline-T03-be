@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nayeli-08-service
+  namespace: nayeli-08-namespace
+spec:
+  type: NodePort
+  ports:
+  - port: 30008
+    targetPort: 8081
+    nodePort: 30008
+  selector:
+    app: nayeli-08-deployment

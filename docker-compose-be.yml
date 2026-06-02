@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  backend:
+    image: nayeliherreraalbino/altavista-backend:5.0
+    container_name: springboot-app
+    ports:
+      - "8081:8081"
+    environment:
+      - PORT=8081
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/altavista
+    depends_on:
+      - mongo
+    restart: unless-stopped
+    networks:
+      - altavista-net
+
+  mongo:
+    image: mongo:7.0
+    container_name: mongodb-server
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: MongoPassword123!
+      MONGO_INITDB_DATABASE: altavista
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+    networks:
+      - altavista-net
+
+volumes:
+  mongo-data:
+    driver: local
+
+networks:
+  altavista-net:
+    driver: bridge
+

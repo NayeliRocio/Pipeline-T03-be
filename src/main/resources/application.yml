@@ -1,0 +1,16 @@
+server:
+  port: ${PORT:8081}
+  address: 0.0.0.0
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://nayeliherrera_db_user:SuUpaPedXiVZ7yRg@cluster0.n5cm8so.mongodb.net/AltavistaBD?retryWrites=true&w=majority
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html

@@ -1,0 +1,23 @@
+# kubectl apply -f mathias-delacruz-06-deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mathias-delacruz-06-deployment
+  namespace: mathias-delacruz-06-namespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mathias-delacruz-06-deployment        # Debe coincidir con las etiquetas del Service
+  template:
+    metadata:
+      labels:
+        app: mathias-delacruz-06-deployment      # Debe coincidir con las etiquetas del Service
+    spec:
+      containers:
+      - name: mathias-delacruz-06-container
+        image: mathiasdlc/mathias-webflux-nosql:latest   # Reemplaza con tu imagen Docker Hub
+        imagePullPolicy: IfNotPresent        # Evitar traer siempre la última versión si hay una actual
+        envFrom:
+        - secretRef:
+            name: mathias-delacruz-06-secret  # Esto cargará todos los valores como variables de entorno

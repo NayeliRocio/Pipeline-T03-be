@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nayeli-08-deployment
+  namespace: nayeli-08-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nayeli-08-deployment
+  template:
+    metadata:
+      labels:
+        app: nayeli-08-deployment
+    spec:
+      containers:
+      - name: nayeli-08-container
+        image: nayeliherreraalbino/mi-app:1.0
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - secretRef:
+            name: nayeli-08-secret

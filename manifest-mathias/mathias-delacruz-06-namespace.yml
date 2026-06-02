@@ -1,0 +1,6 @@
+# kubectl create namespace mathias-delacruz-06-namespace (COMANDO)
+# kubectl apply -f mathias-delacruz-06-namespace.yml (yml)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mathias-delacruz-06-namespace

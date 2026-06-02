@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  sqlserver:
+    image: nayeliherreraalbino/altavista-sqlserver:1.0
+    container_name: sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=MiPassword123!
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql   # opcional si tienes script de inicialización
+    restart: unless-stopped
+    networks:
+      - altavista-net
+
+networks:
+  altavista-net:
+    driver: bridge

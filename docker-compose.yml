@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  backend:
+    image: mathiasdlc/webflux-nosql:latest
+    container_name: webflux-nosql-nayeli
+    ports:
+      - "8081:8081"
+    environment:
+      PORT: 8081
+      SPRING_DATA_MONGODB_URI: "mongodb+srv://nayeliherrera_db_user:SuUpaPedXiVZ7yRg@cluster0.n5cm8so.mongodb.net/AltavistaBD?appName=Cluster0"
+    restart: unless-stopped
